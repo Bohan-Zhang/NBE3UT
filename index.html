@@ -17,7 +17,7 @@
     --gold: #b89a5a;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
   html { scroll-behavior: smooth; }
 
@@ -30,10 +30,11 @@
     line-height: 1.75;
   }
 
-  /* NAV */
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     background: var(--paper);
     border-bottom: 1px solid var(--ash);
@@ -66,9 +67,10 @@
     transition: color 0.2s;
   }
 
-  nav ul li a:hover { color: var(--ember); }
+  nav ul li a:hover {
+    color: var(--ember);
+  }
 
-  /* HERO */
   #hero {
     min-height: 100vh;
     display: flex;
@@ -123,7 +125,6 @@
     border-radius: 100px;
   }
 
-  /* SECTIONS */
   .unit-section {
     padding: 7rem 10%;
     border-bottom: 1px solid var(--ash);
@@ -190,10 +191,11 @@
     color: var(--smoke);
     font-size: 0.95rem;
     line-height: 1.8;
+    margin-top: 0.9rem;
   }
 
-  .content-block p + p {
-    margin-top: 0.9rem;
+  .content-block p:first-of-type {
+    margin-top: 0;
   }
 
   .pullquote {
@@ -221,8 +223,6 @@
     font-style: normal;
   }
 
-
-
   .divider-line {
     width: 48px;
     height: 1px;
@@ -230,7 +230,6 @@
     margin: 1.5rem 0;
   }
 
-  /* PROFILE CARD */
   .profile-card {
     background: var(--paper);
     border: 1px solid var(--ash);
@@ -258,7 +257,6 @@
     line-height: 1.8;
   }
 
-  /* FOOTER */
   footer {
     padding: 4rem 10%;
     background: var(--ink);
@@ -303,7 +301,6 @@
     font-size: 0.72rem;
   }
 
-  /* UNDRIP CALLOUT */
   .undrip-block {
     background: var(--sage);
     color: var(--paper);
@@ -335,7 +332,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <span class="logo">Bohan</span>
   <ul>
@@ -346,7 +342,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <p class="hero-eyebrow">NBE3UT -  My Journey Through Indigenous Voices</p>
   <h1 class="hero-title">Understanding Identity, <em>Celebrating</em> Diversity, Building Community, Connecting to Place</h1>
@@ -359,7 +354,6 @@
   </div>
 </section>
 
-<!-- UNIT 1 -->
 <section class="unit-section" id="unit1">
   <div class="unit-label">
     <span class="unit-tag">Unit 1</span>
@@ -391,11 +385,8 @@
     <h3>UNDRIP Connection</h3>
     <p>UNDRIP Article 11 affirms the right of Indigenous peoples to maintain, protect, and develop the past, present, and future expressions of their culture. The fight over HBC's artifacts is exactly that -  a fight to protect cultural expression that was taken without consent.</p>
   </div>
-
-  
 </section>
 
-<!-- UNIT 2 -->
 <section class="unit-section" id="unit2">
   <div class="unit-label">
     <span class="unit-tag">Unit 2</span>
@@ -425,11 +416,8 @@
       </div>
     </div>
   </div>
-
-  
 </section>
 
-<!-- UNIT 3 -->
 <section class="unit-section" id="unit3">
   <div class="unit-label">
     <span class="unit-tag">Unit 3</span>
@@ -466,11 +454,8 @@
     <h3>UNDRIP Connection</h3>
     <p>UNDRIP Article 13 protects the right of Indigenous peoples to revitalize, use, develop, and transmit their languages, oral traditions, and literatures. Dumont's whole career is an act of living that right out loud.</p>
   </div>
-
-  
 </section>
 
-<!-- UNIT 4 -->
 <section class="unit-section" id="unit4">
   <div class="unit-label">
     <span class="unit-tag">Unit 4</span>
@@ -507,11 +492,8 @@
     <h3>UNDRIP Connection</h3>
     <p>UNDRIP Articles 13 and 14 protect Indigenous language rights and the right to educate children in their own language and culture. Karihwanoron isn't just a school -  it's a legal and cultural assertion of those rights being lived out in practice.</p>
   </div>
-
-  
 </section>
 
-<!-- FOOTER / WORKS CITED -->
 <footer>
   <div class="footer-top">
     <div>
