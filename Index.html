@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bohan's Journey Through Indigenous Voices</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap');
+
+  :root {
+    --ink: #1a1a18;
+    --paper: #f5f0e8;
+    --ash: #e8e2d6;
+    --ember: #c4622d;
+    --sage: #5a7358;
+    --smoke: #7a7468;
+    --gold: #b89a5a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--ash);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 56px;
+  }
+
+  nav .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: var(--smoke);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav ul li a:hover { color: var(--ember); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10rem 10% 6rem;
+    border-bottom: 1px solid var(--ash);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    max-width: 820px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--ember);
+  }
+
+  .hero-body {
+    max-width: 540px;
+    color: var(--smoke);
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero-themes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .theme-pill {
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+  }
+
+  /* SECTIONS */
+  .unit-section {
+    padding: 7rem 10%;
+    border-bottom: 1px solid var(--ash);
+  }
+
+  .unit-section:nth-child(even) {
+    background: #f0ebe0;
+  }
+
+  .unit-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .unit-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--ember);
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+  }
+
+  .unit-theme {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--smoke);
+  }
+
+  .unit-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 5rem;
+    max-width: 1000px;
+  }
+
+  .content-grid.single {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+  }
+
+  .content-block h3 {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 0.75rem;
+  }
+
+  .content-block p {
+    color: var(--smoke);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .content-block p + p {
+    margin-top: 0.9rem;
+  }
+
+  .pullquote {
+    border-left: 3px solid var(--ember);
+    padding: 1rem 1.5rem;
+    margin: 2.5rem 0;
+    max-width: 640px;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  .pullquote cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    font-style: normal;
+  }
+
+
+
+  .divider-line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.5rem 0;
+  }
+
+  /* PROFILE CARD */
+  .profile-card {
+    background: var(--paper);
+    border: 1px solid var(--ash);
+    padding: 2rem;
+    max-width: 500px;
+  }
+
+  .profile-card .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .profile-card .identity {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .profile-card p {
+    font-size: 0.9rem;
+    color: var(--smoke);
+    line-height: 1.8;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 4rem 10%;
+    background: var(--ink);
+    color: var(--smoke);
+    font-size: 0.82rem;
+  }
+
+  footer .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #333;
+  }
+
+  footer .footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  footer .works-cited h4 {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  footer .works-cited p {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  footer .bottom-note {
+    color: #555;
+    font-size: 0.72rem;
+  }
+
+  /* UNDRIP CALLOUT */
+  .undrip-block {
+    background: var(--sage);
+    color: var(--paper);
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+    max-width: 500px;
+  }
+
+  .undrip-block h3 {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .undrip-block p {
+    color: var(--paper);
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 680px) {
+    nav ul { display: none; }
+    .content-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="logo">Bohan</span>
+  <ul>
+    <li><a href="#unit1">Unit 1</a></li>
+    <li><a href="#unit2">Unit 2</a></li>
+    <li><a href="#unit3">Unit 3</a></li>
+    <li><a href="#unit4">Unit 4</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">NBE3UT -  My Journey Through Indigenous Voices</p>
+  <h1 class="hero-title">Understanding Identity, <em>Celebrating</em> Diversity, Building Community, Connecting to Place</h1>
+  <p class="hero-body">This course changed how I see a lot of things. Not just history -  but how identity gets built, taken away, and reclaimed. These are the four units that made that shift happen for me.</p>
+  <div class="hero-themes">
+    <span class="theme-pill">Identity</span>
+    <span class="theme-pill">Diverse Voices</span>
+    <span class="theme-pill">Community</span>
+    <span class="theme-pill">Connection to Place</span>
+  </div>
+</section>
+
+<!-- UNIT 1 -->
+<section class="unit-section" id="unit1">
+  <div class="unit-label">
+    <span class="unit-tag">Unit 1</span>
+    <span class="unit-theme">Critical Literacy and Understanding the Importance of Identity</span>
+  </div>
+  <h2 class="unit-title">The Great Trade Reversal: When History Comes Full Circle</h2>
+  <div class="divider-line"></div>
+
+  <div class="content-grid">
+    <div class="content-block">
+      <h3>Key Learning</h3>
+      <p>In 2025, as the Hudson's Bay Company filed for creditor protection after 355 years of operation, a coalition of First Nations made a satirical offer to buy it back -  with a blanket and some tobacco. The Walking Eagle News story was a joke, but it landed harder than most serious reporting on the same topic. The offer mirrored the exact terms HBC once used to take resources from Indigenous people, and that irony said everything about identity and power that a textbook paragraph couldn't.</p>
+      <p>What this unit taught me is that identity isn't just personal. It's political. The HBC was incorporated in 1670 when King Charles II handed a British company a monopoly over trade in an entire continent's worth of land already occupied by Indigenous peoples. That history doesn't just disappear. It shows up in how communities talk about themselves, how they reclaim their stories, and how they challenge the systems that were built to erase them.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Critical Analysis</h3>
+      <p>The HBC didn't just trade goods unfairly -  it actively displaced Indigenous people and brought diseases like smallpox that wiped out entire communities and the knowledge holders within them. According to the ReconciliACTION YEG article on HBC's legal history, the company used a currency called "Made Beaver" to systematically underpay Indigenous people for fur that was far more valuable on European markets. This is a colonial system embedded inside a business model.</p>
+      <p>What challenges that narrative is the modern response. When First Nations leaders called on HBC to return ceremonial artifacts rather than auction them off, it wasn't just about objects. AFN National Chief Cindy Woodhouse Nepinak stated that some items represent vital aspects of cultural heritage and identity. That's a direct assertion of Indigenous identity against an institution that spent centuries doing the opposite.</p>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <p>"Reconciliation needs to come with action, and right now we're in a process of ensuring that these items that belong to our nations are returned."</p>
+    <cite>AMC Grand Chief Kyra Wilson, CBC News, April 2025</cite>
+  </div>
+
+  <div class="undrip-block">
+    <h3>UNDRIP Connection</h3>
+    <p>UNDRIP Article 11 affirms the right of Indigenous peoples to maintain, protect, and develop the past, present, and future expressions of their culture. The fight over HBC's artifacts is exactly that -  a fight to protect cultural expression that was taken without consent.</p>
+  </div>
+
+  
+</section>
+
+<!-- UNIT 2 -->
+<section class="unit-section" id="unit2">
+  <div class="unit-label">
+    <span class="unit-tag">Unit 2</span>
+    <span class="unit-theme">Diverse Voices and Indigenous Influencers</span>
+  </div>
+  <h2 class="unit-title">Christi Belcourt: Art as Resistance, Not Decoration</h2>
+  <div class="divider-line"></div>
+
+  <div class="content-grid">
+    <div class="content-block">
+      <h3>Influencer Spotlight</h3>
+      <div class="profile-card">
+        <p class="name">Christi Belcourt</p>
+        <p class="identity">Métis (Michif) -  born 1966, Espanola, Ontario</p>
+        <p>Belcourt is a Métis visual artist whose large-scale paintings are directly inspired by traditional Michif beadwork patterns. She's largely self-taught and came to painting as a way to reconnect with Métis culture after her own journey of reclamation. What makes her stand out isn't just the art itself -  it's why she makes it. She turned down commercial opportunities and government grants she felt had conditions that compromised Indigenous sovereignty. That's not a small thing. A lot of artists take the money. She didn't.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h3>Media Analysis</h3>
+      <p>Belcourt's most well-known project is Walking With Our Sisters, a memorial art installation that ran from 2012 to 2019 honoring Missing and Murdered Indigenous Women and Girls. Over 1,763 pairs of unfinished moccasin vamps were submitted by people across North America, and the installation traveled to more than 60 communities over seven years.</p>
+      <p>The medium was the message. Unfinished moccasins represent a life cut short. The fact that thousands of people made them by hand and sent them in created something that couldn't be owned or bought by any institution. The form directly challenged colonial systems by existing outside of them. That's what separates Belcourt's work from art that simply talks about Indigenous issues -  she builds the structure of the work to embody the values she's defending.</p>
+
+      <div class="undrip-block" style="margin-top:1.5rem;">
+        <h3>UNDRIP Connection</h3>
+        <p>UNDRIP Article 3 affirms Indigenous peoples' right to self-determination. Belcourt refusing grants with conditions attached is self-determination in practice -  not just as a concept, but as a daily decision.</p>
+      </div>
+    </div>
+  </div>
+
+  
+</section>
+
+<!-- UNIT 3 -->
+<section class="unit-section" id="unit3">
+  <div class="unit-label">
+    <span class="unit-tag">Unit 3</span>
+    <span class="unit-theme">Cultivating Relationships and Building Community</span>
+  </div>
+  <h2 class="unit-title">Albert Dumont and the Question That Builds Community</h2>
+  <div class="divider-line"></div>
+
+  <div class="content-grid">
+    <div class="content-block">
+      <h3>Community and Voice</h3>
+      <p>Albert Dumont is an Algonquin poet, storyteller, and traditional teacher from Kitigan Zibi, born and raised on traditional Algonquin territory about 150 km north of Ottawa. He served as Ottawa's Poet Laureate from 2021 to 2023, and he's been walking what he calls the "Red Road" -  a path of sobriety and cultural reconnection -  since 1988.</p>
+      <p>What makes him relevant to this unit specifically is that his poetry isn't just personal expression. He writes to build something. He worked as a spiritual advisor for Indigenous men in federal prison. He showed up at city council meetings and recited poems. He said openly that if you want to understand the Algonquin people on whose land Ottawa sits, you should read his work. That's an invitation to community, not just an artistic statement.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Where is the Bird? -  Poem Analysis</h3>
+      <p>The poem "Where is the Bird?" uses repetition as its main structure. The question repeats at the start of the first three verses, which does two things at once: it creates a rhythm that pulls the reader forward, and it refuses to let the question go unanswered too quickly. That makes the reader sit in the searching before arriving anywhere.</p>
+      <p>The bird itself carries a lot of symbolic weight in Algonquin tradition -  it's connected to freedom, to the spirit world, and to the kind of vision that lets you see from above. When Dumont asks where it is, he's asking about something deeper than a literal bird. Lines like "Searching for the place / Where I can discover again / Purpose and a reinvigorated sense of humanity" make it clear he's writing about cultural recovery, not just personal feeling. The community aspect shows up in the fact that he's shared this poem publicly, recited it, built it into a practice of teaching. The poem isn't finished when it's written -  it's finished when it reaches someone.</p>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <p>"If nothing else, the miseries of my life created poetry."</p>
+    <cite>Albert Dumont, Algonquin Poet and Traditional Teacher</cite>
+  </div>
+
+  <div class="content-block" style="margin-top: 1rem; max-width: 640px;">
+    <h3>Personal Reflection</h3>
+    <p>Before this unit I thought of community as something you're born into or something you join. What Dumont's work showed me is that community can also be something you build deliberately, through language, through ceremony, through showing up. Reconciliation doesn't happen through policies alone. It happens when people choose to keep showing up for each other -  and for the next generation -  the way Dumont has done for decades. That shifted something for me about what responsibility actually means.</p>
+  </div>
+
+  <div class="undrip-block">
+    <h3>UNDRIP Connection</h3>
+    <p>UNDRIP Article 13 protects the right of Indigenous peoples to revitalize, use, develop, and transmit their languages, oral traditions, and literatures. Dumont's whole career is an act of living that right out loud.</p>
+  </div>
+
+  
+</section>
+
+<!-- UNIT 4 -->
+<section class="unit-section" id="unit4">
+  <div class="unit-label">
+    <span class="unit-tag">Unit 4</span>
+    <span class="unit-theme">Connection to Place -  Past, Present, Future</span>
+  </div>
+  <h2 class="unit-title">Karihwanoron: What Language Does to Place</h2>
+  <div class="divider-line"></div>
+
+  <div class="content-grid">
+    <div class="content-block">
+      <h3>Place-Based Reflection</h3>
+      <p>The word Karihwanoron is the name of a Mohawk language immersion school, but studying it in this unit made it clear that it's also a statement about what place means. Mohawk language isn't just a way of communicating. It encodes a relationship to the land. The female prefix "Ka" carries the strength of certain words inside the language itself -  meaning the connection to land and to community is literally built into how things are named and described.</p>
+      <p>Colonial systems disrupted this by removing Indigenous children from their communities, banning languages, and replacing place names with European ones. When a language disappears, the way of seeing the world it carried disappears with it. The Karihwanoron school exists as a direct response to that history -  it's grandmothers passing their language to grandchildren, which is also grandmothers passing a whole way of understanding the land to the next generation.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Historical and Contemporary Comparison</h3>
+      <p>Historically, colonial representations of Indigenous peoples and land treated territory as empty, ownable, and separate from the people who had lived on it for thousands of years. Land was something to be mapped, divided, and sold. Indigenous peoples themselves were treated as obstacles to that process rather than as the original relationship holders with that land.</p>
+      <p>A contemporary representation like Karihwanoron flips that entirely. The school exists on the land. It teaches through the land. The language it preserves carries teachings about rivers, animals, seasons, and responsibilities that don't exist in English in the same way. What's being reclaimed through language immersion isn't just vocabulary -  it's a whole way of being located in the world. That's the difference between a colonial map and an Indigenous place name. One marks ownership. The other marks relationship.</p>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <p>"A beautiful voice is one where the mind, the heart, and the voice are all working together."</p>
+    <cite>From the first video -  on the meaning behind the Mohawk language</cite>
+  </div>
+
+  <div class="content-block" style="margin-top: 1rem; max-width: 640px;">
+    <h3>Future Vision</h3>
+    <p>The future I see is one where schools like Karihwanoron aren't exceptions -  they're normal. Where Indigenous communities have full control over how their children are educated, what language they're educated in, and what relationship to the land gets built into that education. UNDRIP Article 14 says Indigenous peoples have the right to establish and control their educational systems. The Karihwanoron school is exactly that right being exercised. The vision is for it to spread, to be funded properly, and to be treated as the living, sophisticated cultural institution it actually is -  not as a heritage project, but as the future.</p>
+  </div>
+
+  <div class="undrip-block">
+    <h3>UNDRIP Connection</h3>
+    <p>UNDRIP Articles 13 and 14 protect Indigenous language rights and the right to educate children in their own language and culture. Karihwanoron isn't just a school -  it's a legal and cultural assertion of those rights being lived out in practice.</p>
+  </div>
+
+  
+</section>
+
+<!-- FOOTER / WORKS CITED -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <p class="footer-title">Bohan<br>NBE3UT -  Indigenous Voices</p>
+    </div>
+    <div class="works-cited">
+      <h4>Works Cited</h4>
+      <p>Fontaine, Tim. "First Nations offer to buy 'iconic' Hudson's Bay store chain for tobacco, blanket." <em>Walking Eagle News</em>, 17 Mar. 2025.</p>
+      <p>"Assembly of First Nations joins calls for Hudson's Bay to return ceremonial items." <em>CityNews Vancouver</em>, 1 May 2025.</p>
+      <p>Noakes, Taylor C. "As North America's oldest company faces bankruptcy, the sale of its collection raises fears among Indigenous communities." <em>The Art Newspaper</em>, 4 July 2025.</p>
+      <p>ReconciliACTION YEG. "The Hudson's Bay Company History with Indigenous People for Legal Education." <em>ReconciliACTION Team</em>, 18 Mar. 2025.</p>
+    </div>
+  </div>
+  <p class="bottom-note">Created for NBE3UT -  Understanding Contemporary First Nations, Metis, and Inuit Voices</p>
+</footer>
+
+</body>
+</html>
