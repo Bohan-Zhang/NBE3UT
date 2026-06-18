@@ -20,7 +20,9 @@
     --spacing-lg: 2rem;
   }
 
-   { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
   html {
     scroll-behavior: smooth;
@@ -108,7 +110,7 @@
     margin-bottom: 1.5rem;
     font-weight: 400;
     opacity: 0.95;
-    / eyebrow text /
+    /* eyebrow text */
   }
 
   .hero-title {
@@ -176,10 +178,6 @@
 
   .unit-section:nth-child(even) {
     background: #f0ebe0;
-  }
-
-  .unit-section:nth-child(4) {
-    / last section padding /
   }
 
   .unit-label {
